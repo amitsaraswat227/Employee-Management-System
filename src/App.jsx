@@ -3,14 +3,13 @@ import Login from './components/Auth/Login'
 import EmployeeDashboard from './components/Dashboard/EmployeeDashboard'
 import AdminDashboard from './components/Dashboard/AdminDashboard'
 import {AuthContext} from './context/AuthProvider'
-import { data } from 'framer-motion/client'
+
 import { Route, Routes } from 'react-router-dom'
 import EmployeeManager from './NewEmployee/AddEmployee'
 import { Navigate } from 'react-router-dom'
 import EmployeeList from './NewEmployee/EmployeeList'
 
 
-// import { getLocalstorage, setLocalstorage } from './utils/LocalStorage'
 
 
 const App = () => {
@@ -37,7 +36,7 @@ const handlelogin=(email,password)=>{
 const adminUser=email == 'admin@example.com' && password == '12345'
 if(adminUser){
   setUser('admin')
-  // localStorage.setItem('loggedinUser',JSON.stringify({firstname:'admin',role:'admin'}))
+
    localStorage.setItem("loggedinUser", JSON.stringify({  role: "admin" }));
 }
 else if(userdata){
@@ -45,7 +44,7 @@ const employee=userdata.find((e)=>email==e.email && password==e.password)
   if(employee){
 setUser('employee')
 setloggedInUserData(employee);
-// localStorage.setItem('loggedinUser',JSON.stringify({role:'employee',data:employee}))
+
  localStorage.setItem("loggedinUser", JSON.stringify({ role: "employee" , data:employee}));
   }
 
@@ -61,26 +60,9 @@ alert('Invalid Credentials');
   <>
   <div>
      {!user?<Login handlelogin={handlelogin}/>:''}
-    {/* {user=='admin'?<AdminDashboard  changeUser={setUser}/>:(user=='employee'?<EmployeeDashboard  changeUser={setUser} data={loggedInUserData}/>:null)} */}
-    {/* <Login/> */}
-    {/* <EmployeeDashboard/> */}
-    {/* <AdminDashboard/> */}
    
-
-{/*    
       <Routes>
-        <Route path="/" element={<AdminDashboard />} />
-        <Route path="/add-employee" element={<AddEmployee />} />
-      </Routes> */}
-
     
-     {/* <Routes>
-  
-  <Route path="/add-employee" element={<EmployeeManager />} />
-</Routes> */}
-     
-      <Routes>
-      {/* Admin Routes */}
       {user === 'admin' && (
         <>
           <Route path="/" element={<AdminDashboard changeUser={setUser} />} />
@@ -91,7 +73,7 @@ alert('Invalid Credentials');
         </>
       )}
 
-      {/* Employee Routes */}
+   
       {user === 'employee' && (
         <>
           <Route path="/" element={<EmployeeDashboard changeUser={setUser} data={loggedInUserData} />} />
