@@ -19,7 +19,7 @@ const Login = ({handlelogin}) => {
             }}>
                 <input type="email" placeholder='Enter the email'
                 required
-                className='outline-none bg-transparent border-2 border-emerald-600 font-medium text-lg py-2 px-6 rounded-full mt-3 placeholder:text-gray-400' 
+                className='outline-none bg-transparent border-2 border-emerald-600 font-medium focus:outline-none text-lg py-2 px-6 rounded-full mt-3 placeholder:text-gray-400' 
                 value={email}
                  onChange={(event)=>{
                   setEmail(event.target.value)
@@ -43,4 +43,8 @@ const Login = ({handlelogin}) => {
   )
 }
 
-export default Login
+export default Login;
+
+
+
+  

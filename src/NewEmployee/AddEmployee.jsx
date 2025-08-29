@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {  useNavigate } from "react-router-dom";
+// import {  useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FaBackward } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const EmployeeManager = () => {
-  const navigate=useNavigate();
+  // const navigate=useNavigate();
   const [employees, setEmployees] = useState(() => {
     return JSON.parse(localStorage.getItem("employees")) || [];
   });
@@ -22,8 +23,10 @@ const EmployeeManager = () => {
   const handleAdd = () => {
     if (!form.firstname || !form.email || !form.password || !form.department || !form.role) {
       alert("All fields required");
+
       return;
     }
+
 
     const newEmployee = {
       id: Date.now(),
@@ -92,7 +95,7 @@ const EmployeeManager = () => {
 
      <label
               htmlFor="name"
-              className="text-base font-medium text-gray-900 dark:text-gray-200"
+              className="text-base font-medium text-white"
             >
               
               Employee Name
@@ -112,7 +115,7 @@ const EmployeeManager = () => {
 
   <label
               htmlFor="email"
-              className="text-base font-medium text-gray-900 dark:text-gray-200"
+              className="text-base font-medium text-white"
             >
               
               Employee Email
@@ -131,7 +134,7 @@ const EmployeeManager = () => {
 <div>
    <label
               htmlFor="password"
-              className="text-base font-medium text-gray-900 dark:text-gray-200"
+              className="text-base font-medium  text-white"
             >
               
               Employee Password
@@ -157,7 +160,7 @@ const EmployeeManager = () => {
 <div>
    <label
               htmlFor="department"
-              className="text-base font-medium text-gray-900 dark:text-gray-200"
+              className="text-base font-medium  text-white"
             >
               
               Employee department
@@ -177,7 +180,7 @@ const EmployeeManager = () => {
 <div>
    <label
               htmlFor="role"
-              className="text-base font-medium text-gray-900 dark:text-gray-200"
+              className="text-base font-medium  text-white"
             >
               
               Employee Role
