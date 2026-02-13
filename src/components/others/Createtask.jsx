@@ -15,69 +15,6 @@ const Createtask = () => {
   const [description, setDescription] = useState('')
 
 
-  // this is a new task
-  // const [newtask, setNewTask] = useState({})
-  
-  // const submitHandler=(e)=>{
-  //   e.preventDefault();
-  //   // console.log(tasktitle,date,assignto,category,description)
-  //   setNewTask({tasktitle,date,assignto,category,description,active:false,newTask:true,failed:false,completed:false})
-  //   const data=userdata;
-  //   console.log(data);
-  //   data.forEach(function (elem){
-  //     if(assignto == elem.firstname){
-  //       elem.tasks.push(newtask)
-  //       // console.log(newtask) 
-  //       elem.taskCount.newtask = elem.taskCount.newtask+1;
-  //       console.log(elem)
-  //     }
-  //   })
-  //   setUserdata(data);
-  //   console.log(data)
-    
-
-  //   setTasktitle('');
-  //   setDate('');
-  //   setAssignto('');
-  //   setCategory('');
-  //   setDescription('');
-
-  // }
-
-//   const submitHandler = (e) => {
-//   e.preventDefault();
-
-//   const task = {
-//     tasktitle,
-//     date,
-//     assignto,
-//     category,
-//     description,
-//     active: false,
-//     newtask: true,
-//     failed: false,
-//     completed: false,
-//   };
-
-//   const data = [...userdata]; // make a shallow copy
-//   data.forEach((elem) => {
-//     if (assignto === elem.firstname) {
-//       elem.tasks.push(task);
-//       elem.taskCount.newtask = (elem.taskCount.newtask || 0) + 1;
-//     }
-//   });
-
-//   setUserdata(data);
-//   console.log(data)
-
-//   // Reset form
-//   setTasktitle('');
-//   setDate('');
-//   setAssignto('');
-//   setCategory('');
-//   setDescription('');
-// };
-
 const submitHandler = (e) => {
   e.preventDefault();
 
@@ -93,12 +30,12 @@ const submitHandler = (e) => {
     completed: false,
   };
 
-  //  Get the full employee list from localStorage
+  
   const allEmployees = JSON.parse(localStorage.getItem("employees")) || [];
 
-  //  Update the employee
+ 
   const updatedEmployees = allEmployees.map((emp) => {
-    if (emp.firstname === assignto) { // ideally use emp.email === assignto
+    if (emp.firstname === assignto) { 
       const updatedTasks = [...emp.tasks, task];
       const updatedCount = {
         ...emp.taskCount,
@@ -109,13 +46,12 @@ const submitHandler = (e) => {
     return emp;
   });
 
-  // 3. Save updated list to localStorage
   localStorage.setItem("employees", JSON.stringify(updatedEmployees));
 
-  // 4. Update context 
+
   setUserdata(updatedEmployees);
 
-  // 5. Reset form
+
   setTasktitle("");
   setDate("");
   setAssignto("");

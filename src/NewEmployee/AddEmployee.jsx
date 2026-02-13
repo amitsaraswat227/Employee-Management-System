@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-// import {  useNavigate } from "react-router-dom";
+
 import { Link } from "react-router-dom";
 import { FaBackward } from "react-icons/fa";
-import toast from "react-hot-toast";
+
 
 const EmployeeManager = () => {
-  // const navigate=useNavigate();
+
   const [employees, setEmployees] = useState(() => {
     return JSON.parse(localStorage.getItem("employees")) || [];
   });
